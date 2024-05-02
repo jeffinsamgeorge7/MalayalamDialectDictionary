@@ -92,7 +92,7 @@ export default function PersistentDrawerLeft() {
 
   return (
       <div className={style.container}>
-      <Box sx={{ display: 'flex',gap:'10px' }} className={style.content2}>
+      <Box sx={{ display: 'flex',gap:'10px' }} className={style.container1}>
         <CssBaseline /> 
         <Drawer
               sx={{
@@ -144,7 +144,7 @@ export default function PersistentDrawerLeft() {
        
         </Drawer>
         <Main open={open}>
-      <MapContainer center={[10.537489, 76.221303]} zoom={8} style={{ height: '900px' ,width:'900px'}} zoomControl={false}>
+      <MapContainer center={[10.537489, 76.221303]} zoom={8} style={{ height: '900px' ,width:'800px'}} zoomControl={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
@@ -178,7 +178,23 @@ export default function PersistentDrawerLeft() {
           </MapContainer> 
         </Main>
         </Box>
-        <div className={style.content2}>
+        <div className={style.container2}>
+
+        <div className={style.content}>
+        <div className={style.content11}>
+                    
+                   </div>
+                   <div className={style.content12}>
+                    sfsf
+                   </div>
+
+        </div>
+        <div className={style.content1}>
+          dfvd
+
+        </div>
+                
+                  
 
         </div>
     </div>
