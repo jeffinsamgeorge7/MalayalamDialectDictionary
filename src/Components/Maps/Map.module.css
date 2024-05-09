@@ -1,0 +1,22 @@
+.map{
+  height: 450px;
+
+  width: 420px;
+  background-color: white;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 5px;
+  margin-left: 10px;
+  z-index: 1;
+}
+@media only screen and (max-width: 600px) {
+  .map{
+    
+    width: 450px;
+    border-radius: 10px;
+    margin-left: 10px;
+    height: 450px;
+    margin-bottom: 20px;
+    z-index: 1;
+  }
+}

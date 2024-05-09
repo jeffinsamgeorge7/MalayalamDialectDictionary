@@ -77,7 +77,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const Home = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState('');
   

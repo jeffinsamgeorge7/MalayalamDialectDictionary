@@ -1,10 +1,9 @@
-import { Home } from "./Components/Home/Home"
-import { Advance } from "./Components/Newhome/Advance"
-import PinnedSubheaderList from "./Components/Newhome/Dialectlist"
 
-import PersistentDrawerLeft from "./Components/Newhome/Nepage"
-import { Newhome } from "./Components/Newhome/Newhome"
-import { Userdict } from "./Components/Newhome/Userdict"
+import { Trailmap } from "./Components/Newhome/Trailmap"
+
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+import { Advance } from "./Components/Newhome/Advance";
 
 
 
@@ -12,9 +11,11 @@ function App() {
  
   return (
     <>
-   {/* <PersistentDrawerLeft/> */}
-  <Advance/>
-   {/* <Userdict/> */}
+      <MantineProvider defaultColorScheme="light" >
+
+      <Advance/>
+      </MantineProvider>
+    
     </>
   )
 }

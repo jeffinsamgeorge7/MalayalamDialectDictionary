@@ -67,7 +67,6 @@
 // }
 
 
-
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -96,7 +95,7 @@ export default function SearchTaluk() {
         onChange={handleChangeDistrict}
         id="district-autocomplete"
         options={locations.DISTRICT}
-        sx={{ width: 280, paddingBottom: '10px' }}
+        sx={{ width: 180, paddingBottom: '10px' }}
         renderInput={(params) => <TextField {...params} label="District" />}
       />
       <Autocomplete
@@ -105,10 +104,10 @@ export default function SearchTaluk() {
         id="taluk-autocomplete"
         options={filteredTaluks}
         getOptionLabel={(option) => option.NAME}
-        sx={{ width: 280, paddingBottom: '10px' }}
+        sx={{ width: 180, paddingBottom: '10px' }}
         renderInput={(params) => <TextField {...params} label="Taluk" />}
       />
-      <TextField sx={{ width: 280, paddingBottom: '10px' }} placeholder="Search" />
+      {/* <TextField sx={{ width: 280, paddingBottom: '10px' }} placeholder="Search" /> */}
     </>
   );
 }
