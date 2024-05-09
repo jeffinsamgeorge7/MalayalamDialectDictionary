@@ -1,196 +1,145 @@
-import * as React from 'react';
-import style from './home.module.css';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import { MapContainer, TileLayer, GeoJSON ,ZoomControl,Polyline} from 'react-leaflet';
-import Control from 'react-leaflet-custom-control'
-import SearchTaluk from '../Home/SearchTaluk';
-import mapdata from '../../assets/state.json';
-import mapdata1 from '../../assets/district.json'
-import neww from '../../assets/response.json'
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import Searchdistrict from '../Home/Serachdistrict';
-import SearchVillage from '../Home/SearchVillage';
-import InteractiveList from '../Home/InteractiveList';
+import React,{useState} from 'react'
+import style from  './Home.module.css';
+import { HeaderSearch } from '../Header/HeaderSearch';
+import { TextInput, ActionIcon, useMantineTheme, rem, Menu, } from '@mantine/core';
+import { IconSearch, IconArrowRight,IconVolume2 } from '@tabler/icons-react';
+import { Keralamap } from '../Maps/Keralamap';
 
-const drawerWidth = 300;
-const options = [ 'ALL','DISTRICT','TALUK','VILLAGE', 'PANCHAYATH'];
+// const data = [
+//   'Kerala',
+//   'District',
+//   'Corporation',
+//   'Muncipality',
+//   'Block',
+//   'Panchayath',
+//   'Taluk',
+//   'Village',
+// ];
 
-
-let dist='Pathanamthitta'
-const stateFeatures = mapdata1.features.filter(
-  feature => feature.properties.DISTRICT === dist 
-  
-);
-
-
-const stateGeoJSON = {
-  type: 'FeatureCollection',
-  features: stateFeatures,
-};
-
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    // padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  }),
-);
-
-
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
-
-
+const data = [
+  'Kerala',
+  'District',
+  'Taluk',
+  'Block',
+];
 
 export const Home = () => {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
-  const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState('');
+  
   
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
- 
+  const theme = useMantineTheme();
+
+
+
+
   return (
     <>
-      <div className={style.container}>
-    <div className={style.container1}>
-    <Box sx={{ display: 'flex' }} >
-        <CssBaseline /> 
-        <Drawer
-              sx={{
-                width: drawerWidth,
-                flexShrink: 0,
-                '& .MuiDrawer-paper': {
-                  width: drawerWidth,
-                  boxSizing: 'border-box',
-              
+       <HeaderSearch/>
+            
+            <div className={style.container}>
+                
+           
+            <div className={style.content}>
+                <h1>
+                    MALAYALAM DIALECT MAP
+                </h1>
+                <div   className={style.Search}>
+                <TextInput style={{width:'420px',marginLeft:'20px' ,marginBottom:'10px',marginRight: '10px',  boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'}}
+                   
+                   size="md"
+                   placeholder="Search questions"
+                   rightSectionWidth={42}
+                  leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+                 
 
-                },
-              }}
-              variant="persistent"
-              anchor="left"
-              open={open}
-          >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-                {/* <Searchoption style={{padding:'2px'}}/>
-          <p></p> */}
-          {/* <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
-                <div>{`inputValue: '${inputValue}'`}</div>
-                <br /> */}
-        <Autocomplete
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                  setInputValue(newInputValue);
-                }} 
-                // onInputChange={handleInputChange}
-                id="controllable-states-demo"
-                options={options}
-                sx={{ width: 280 }}
-                renderInput={(params) => <TextField {...params} label="Controllable" />}
-          />
-      <p></p>
+                  rightSection={
+                    <ActionIcon size={32}  color={theme.primaryColor}   variant="filled ">
+                    <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+                    </ActionIcon>
+                         } 
+                 />
+                 
+               
+                </div>
+             
+                 {/* map */}
+                 <div className={style.content1}>
+                  <div>
+                 
+                <Keralamap />
+                
+                  </div>
+                 <div className={style.dictionary}>
+                 <h1>മീൻ <IconVolume2/></h1>
+                 <h4>Formal: മീൻ </h4>
+                 
+                 <h4>IPA miːn̪u </h4>
+                 <p>ശുദ്ധജലത്തിലും സമുദ്രജലത്തിലും ജീവിക്കുന്ന നട്ടെല്ലുള്ള ശീതരക്തജീവികളാണ്‌ മത്സ്യങ്ങൾ അഥവാ മീനുകൾ </p>
+<hr/>
+                 <h3>വാചകം</h3>
+                <ol>
+                  <li>മീൻ ഒരു ഭക്ഷ്യവിഭവമായി ഉപയോഗിക്കുന്നു</li>
+                  
+                </ol>
 
-       {value === "TALUK" &&  <SearchTaluk/>}
-       {value === "DISTRICT" &&  <Searchdistrict/>}
-       {value === "VILLAGE" &&  <SearchVillage/>}
+                
+                    <h3>ഭാഷാഭേദങ്ങൾ</h3>
+                    <p>മീൻ</p>
+                    <p>മത്സ്യം</p>
+                 </div>
 
-       
-        </Drawer>
-        <Main open={open}>
-      <MapContainer center={[10.537489, 76.221303]} zoom={8} style={{ height: '98vh' ,width:'900px'}} zoomControl={false}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-               <ZoomControl position="bottomright" zoomInText="🧐" zoomOutText="🗺️" />
-               <Control prepend position='topleft'>
-               <Paper component="form" sx={{  display: 'flex', alignItems: 'center', width: 400,mr: 2, ...(open && { display: 'none' })  }}>
-                     <IconButton sx={{  p: '10px', mr: 2, ...(open && { display: 'none' }) }} aria-label="menu"  onClick={handleDrawerOpen} >
-                     <MenuIcon />
-                     </IconButton>
-                     <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search Dialect Maps" inputProps={{ 'aria-label': 'search dialect maps' }}/>
-                     <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                     <SearchIcon />
-                     </IconButton>
-                     <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                     <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                     <DirectionsIcon />
-                      </IconButton>
-               </Paper>
-                </Control>
-                {/* <GeoJSON data={mapdata}/> */}
-                <GeoJSON data={neww}/>
-                <GeoJSON data={stateGeoJSON} style={() => {
-                                                    return {
-                                                            color: 'brown', // change to the color you want for the border
-                                                            fillColor: 'transparent',
-                                                            weight: 2,
-                                                            opacity: 1,
-                                                            fillOpacity: 1
-                                                          };
-                                                        }}/>
-          </MapContainer> 
-        </Main>
-        </Box>
-    </div>
+                 
+             
+                </div>
+                <div className={style.table}>
+                  <div className={style.table1}>
+                      <table>
+                        <tr><td>നാമം</td></tr>
+                        <hr/>
+                        <tr>മീൻ</tr>
+                        <tr>മത്സ്യം</tr>
+                      </table>
+                  </div>
+                  <div className={style.table2}>
+                  <table>
+                        <tr><td>ക്രിയ</td></tr>
+                         <hr/>
+                        <tr>മീൻ പിടിക്കുക</tr>
+                      </table>
+                  </div>
 
+                  <div className={style.table3}>
+                  <table>
+                        <tr><td>വിശേഷണം</td></tr>
+                        <hr/>
+                        <tr>മീൻ പിടിക്കുക</tr>
+                      </table>
+                  </div>
 
-<div className={style.container2}>
-        <div className={style.content1}>dvdv</div>
-        <div className={style.content2}>lcd</div>
-        <div className={style.content3}>vhgv</div>
-  
-</div>
-  </div>
+                
+               </div>
 
+               <div className={style.table}>
+               
+
+               </div>
+
+                {/* <div className={style.dialects}>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  <h1>dvdfv</h1>
+                  
+                </div> */}
+            </div>
+            </div>
+   
+    
     </>
   )
 }

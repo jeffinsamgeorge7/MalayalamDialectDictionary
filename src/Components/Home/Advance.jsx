@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import style from  './Advance.module.css';
-import { HeaderSearch } from './HeaderSearch';
+import { HeaderSearch } from '../Header/HeaderSearch';
 import { TextInput, ActionIcon, useMantineTheme, rem,Switch, Group,Button,Modal,UnstyledButton, Menu, } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSearch, IconArrowRight,IconVolume2,IconFilter, IconChevronDown } from '@tabler/icons-react';
@@ -8,7 +8,7 @@ import { MapContainer, GeoJSON,Marker,Popup } from "react-leaflet";
 import mapdata from '../../assets/district.json';
 import image1 from '../../assets/location.png';
 import { Picker } from '../Dropdown/Picker';
-import SearchTaluk from '../Home/SearchTaluk';
+
 import { Filter1 } from '@mui/icons-material';
 import { Districtmap } from '../Maps/Districtmap';
 import classes from './Picker.module.css';
@@ -34,7 +34,6 @@ const data = [
   'Kerala',
   'District',
   'Taluk',
-  'Block',
 ];
 
 
@@ -121,15 +120,14 @@ export const Advance = () => {
                     MALAYALAM DIALECT MAP
                 </h1>
                 <div   className={style.Search}>
-                <TextInput style={{width:'390px',marginLeft:'20px' ,marginBottom:'10px',marginRight: '10px',  boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'}}
-                   
+                <TextInput style={{width:'390px',marginLeft:'20px' ,marginBottom:'10px',marginRight: '10px',  boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'}}   
                    size="md"
                    placeholder="Search questions"
                    rightSectionWidth={42}
-                  leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+                   leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
                  
 
-                  rightSection={
+                   rightSection={
                     <ActionIcon size={32}  color={theme.primaryColor}   variant="filled ">
                     <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
                     </ActionIcon>
@@ -138,9 +136,7 @@ export const Advance = () => {
                   <Modal opened={opened} onClose={close} title="Filter" style={{zIndex:'10',marginTop:'20px'}}>
         {/* Modal content */}
         <div  style={{height:'30vh',display: 'flex',flexDirection:'column',zIndex:'10',marginTop:'20px'}}>
-        {/* <Picker onSelect={handleSelect} />
-
-{selected === "Taluk" &&  <SearchTaluk/>} */}
+       
 
 <Menu
       onOpen={() => setOpened(true)}
@@ -162,12 +158,9 @@ export const Advance = () => {
     </Menu>
     {selected === "District" &&  <Districtpicker mainSelect={opSelect}/>} 
     {selected === "Taluk" &&  <Talukpicker mainSelect={opSelect}  takSelect={handleTalukSelect}/>} 
-    {selected === "Block" &&  <Blockpicker mainSelect={opSelect}  takSelect={handleTalukSelect}/>} 
-
           
         </div>
-       
-                  
+               
 
       </Modal>
           <   IconFilter onClick={open}  style={{ width: rem(30), height: rem(30), marginTop:'5px'}} />
@@ -176,23 +169,14 @@ export const Advance = () => {
     
                 </div>
              
-                 {/* map */}
+                
                  <div className={style.content1}>
                   <div>
-                  {/* <MapContainer   className={style.map}zoom={7} center={[10.537489, 76.221303]} >
-                <GeoJSON
-                      data={mapdata}
-                      style={countryStyle}
-                      onEachFeature={onEachCountry}
-                   />
-                   <Marker position={position1} icon={customIcon1}>
-                                    <Popup>മീൻ</Popup>
-                                </Marker>
-                </MapContainer> */}
+                  {/* maps */}
                 {selected === "Kerala" &&  <Keralamap />} 
                 {selected === "District" &&  <Districtmap selectedValue={selecteddist}/>} 
                 {selected === "Taluk" &&  <Talukmap selectedValue={selecteddist} talukvalue={selectedTaluk}/>} 
-                  
+                   {/* maps */}
                     
                   </div>
                  <div className={style.dictionary}>
@@ -245,21 +229,8 @@ export const Advance = () => {
                 
                </div>
 
-               <div className={style.table}>
                
 
-               </div>
-
-                {/* <div className={style.dialects}>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  <h1>dvdfv</h1>
-                  
-                </div> */}
             </div>
             </div>
    
