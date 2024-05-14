@@ -16,9 +16,17 @@
    }
    .content{
         width: 1000px;
-        height: 100%x;
+        height: 100%;
         box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
         background-color: white;
+   }
+   .Search{
+    margin-left: 30px;
+    
+   }
+   .Searchinput{
+    width: 500px;
+    
    }
    .content h1{
     text-align: center;
@@ -31,9 +39,13 @@
 
 }
 .Search{
-  display: flex;
-  flex-direction: row;
-}
+  margin-left: 30px;
+  
+ }
+ .Searchinput{
+  width: 420px;
+  
+ }
 /* .map{
   height: 550px;
 
@@ -85,7 +97,23 @@
   display: flex;
   flex-direction: row;
   margin-bottom:20px; 
+
+ 
 }
+.tabledialects{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  width: 950px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-right: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+
+
 .table1{
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   width: 300px;
@@ -93,6 +121,7 @@
   display: flex;
   flex-direction: column;
   margin-right: 20px;
+  padding: 20px;
   margin-left: 30px
 }
 .table2{
@@ -101,6 +130,7 @@
   display: flex;
   border-radius: 5px;
   flex-direction: column;
+  padding: 20px;
   margin-right: 20px;
 }
 .table3{
@@ -108,6 +138,7 @@
   width: 300px;
   display: flex;
   border-radius: 5px;
+  padding: 20px;
   flex-direction: column;
 }
 @media only screen and (max-width: 600px) {
@@ -119,21 +150,23 @@
   .content h1{
     font-size:22px;
   }
+
   .Search{
-    margin-left: 20px;
-  }
-  .map{
+    margin-left: 30px;
     
-    width: 450px;
+   }
+  /* .map{
+    
+    width: 320px;
     border-radius: 10px;
     margin-left: 10px;
     height: 420px;
     margin-bottom: 10px;
     z-index: 1;
-  }
+  } */
   .dictionary{
     height: 100%;
-    width: 450px; 
+    width: 420px; 
     padding: 10px;
    
     border-radius:10px;
@@ -174,28 +207,43 @@
 .table{
   display: flex;
   flex-direction: column;
+  margin: 20px;
 }
 .table1{
   
-  width: 450px;
+  width: 420px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  
+  margin-left: 10px;
 }
 .table2{
   
-  width: 450px;
+  width: 410px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .table3{
   
-  width: 450px;
+  width: 410px;
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
+.tabledialects{
+  
+  width: 420px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-right: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+
 }

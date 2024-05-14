@@ -173,7 +173,7 @@ export const Advance = () => {
                  <div className={style.content1}>
                   <div>
                   {/* maps */}
-                {selected === "Kerala" &&  <Keralamap />} 
+                {/* {selected === "Kerala" &&  <Keralamap />}  */}
                 {selected === "District" &&  <Districtmap selectedValue={selecteddist}/>} 
                 {selected === "Taluk" &&  <Talukmap selectedValue={selecteddist} talukvalue={selectedTaluk}/>} 
                    {/* maps */}

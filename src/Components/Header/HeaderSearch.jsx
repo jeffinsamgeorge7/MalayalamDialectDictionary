@@ -31,7 +31,7 @@ export function HeaderSearch() {
       <div className={classes.inner}>
         <Group>
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-            <img src={image} alt=""/>
+            <img src={image} alt="" width="90px"/>
         </Group>
 
         <Group>

@@ -5,6 +5,8 @@ import { Home } from "./Components/Home/Home";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MantineProvider } from '@mantine/core';
+import { Drilldownmap } from "./Components/Maps/Drilldownmap";
+
 function App() {
  
   return (
@@ -13,6 +15,7 @@ function App() {
 <MantineProvider defaultColorScheme="light" >
 <BrowserRouter>
       <Routes>
+          
           <Route exact path='/' element={< Home />}></Route>  
           <Route exact path='/pre' element={< Advance />}></Route>  
       </Routes>
